@@ -9,6 +9,7 @@ type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 pub type DbConnection = r2d2::PooledConnection<ConnectionManager<PgConnection>>;
 
 embed_migrations!();
+
 lazy_static! {
     static ref POOL: Pool = {
         let db_url = env::var("DATABASE_URL").expect("Database url not set");
